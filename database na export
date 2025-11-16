@@ -1,0 +1,804 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 16, 2025 at 07:59 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `katakumi`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `delivery`
+--
+
+CREATE TABLE `delivery` (
+  `delivery_id` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `country` varchar(100) DEFAULT 'philippines',
+  `delivery_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `delivery`
+--
+
+INSERT INTO `delivery` (`delivery_id`, `order_id`, `country`, `delivery_date`) VALUES
+(1, 176, 'philippines', '2025-11-15'),
+(2, 177, 'philippines', '2025-11-15'),
+(3, 178, 'philippines', '2025-11-15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `customer_name` varchar(99) NOT NULL,
+  `customer_phone` varchar(99) NOT NULL,
+  `oder_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` enum('pending','processing','shipped','delivered','cancelled') DEFAULT 'pending',
+  `total_amount` decimal(10,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `customer_name`, `customer_phone`, `oder_date`, `status`, `total_amount`) VALUES
+(1, 34, '', '', '2025-11-11 11:23:55', 'cancelled', NULL),
+(2, 34, '', '', '2025-11-11 11:24:23', 'cancelled', NULL),
+(3, 34, '', '', '2025-11-11 11:28:23', 'cancelled', NULL),
+(4, 34, '', '', '2025-11-11 11:42:02', 'cancelled', NULL),
+(5, 34, '', '', '2025-11-11 11:47:00', 'cancelled', NULL),
+(6, 34, '', '', '2025-11-11 12:00:52', 'cancelled', NULL),
+(7, 34, '', '', '2025-11-11 12:13:23', 'cancelled', NULL),
+(8, 34, '', '', '2025-11-11 12:18:09', 'cancelled', NULL),
+(9, 34, '', '', '2025-11-11 12:28:21', 'cancelled', NULL),
+(10, 35, '', '', '2025-11-11 12:33:04', 'cancelled', NULL),
+(11, 30, '', '', '2025-11-11 13:00:39', 'cancelled', NULL),
+(12, 30, '', '', '2025-11-11 13:31:38', 'cancelled', NULL),
+(13, 30, '', '', '2025-11-11 14:08:36', 'cancelled', NULL),
+(14, 30, '', '', '2025-11-11 14:25:26', 'cancelled', NULL),
+(15, 30, '', '', '2025-11-11 14:27:08', 'cancelled', NULL),
+(16, 30, '', '', '2025-11-11 14:30:56', 'cancelled', NULL),
+(17, 30, '', '', '2025-11-11 14:47:53', 'cancelled', NULL),
+(18, 36, '', '', '2025-11-11 14:50:31', 'cancelled', NULL),
+(19, 36, '', '', '2025-11-11 14:52:51', 'cancelled', NULL),
+(20, 36, '', '', '2025-11-11 14:54:29', 'cancelled', NULL),
+(21, 36, '', '', '2025-11-11 15:00:45', 'cancelled', NULL),
+(22, 36, '', '', '2025-11-11 15:08:25', 'cancelled', NULL),
+(23, 36, '', '', '2025-11-11 15:11:07', 'cancelled', NULL),
+(24, 36, '', '', '2025-11-11 15:14:34', 'cancelled', NULL),
+(25, 36, '', '', '2025-11-11 15:25:43', 'cancelled', NULL),
+(26, 36, '', '', '2025-11-11 15:26:30', 'cancelled', NULL),
+(27, 30, '', '', '2025-11-11 15:35:09', 'cancelled', NULL),
+(28, 30, '', '', '2025-11-12 00:27:08', 'cancelled', NULL),
+(29, 30, '', '', '2025-11-12 00:36:11', 'cancelled', NULL),
+(30, 30, '', '', '2025-11-12 01:32:59', 'cancelled', NULL),
+(31, 30, '', '', '2025-11-12 01:39:55', 'cancelled', NULL),
+(32, 30, '', '', '2025-11-12 02:50:16', 'cancelled', NULL),
+(33, 30, '', '', '2025-11-12 02:56:20', 'cancelled', NULL),
+(34, 37, '', '', '2025-11-12 09:30:51', 'cancelled', NULL),
+(35, 30, '', '', '2025-11-12 09:59:05', 'cancelled', NULL),
+(36, 30, '', '', '2025-11-12 10:02:37', 'cancelled', NULL),
+(37, 30, '', '', '2025-11-12 10:27:30', 'cancelled', NULL),
+(38, 30, '', '', '2025-11-12 10:28:09', 'cancelled', NULL),
+(39, 30, '', '', '2025-11-12 10:47:51', 'cancelled', NULL),
+(40, 30, '', '', '2025-11-12 11:01:37', 'cancelled', NULL),
+(41, 30, '', '', '2025-11-12 11:17:39', 'cancelled', NULL),
+(42, 30, '', '', '2025-11-12 11:18:14', 'cancelled', NULL),
+(43, 30, '', '', '2025-11-12 11:22:53', 'cancelled', NULL),
+(44, 30, '', '', '2025-11-12 11:23:37', 'cancelled', NULL),
+(45, 30, '', '', '2025-11-12 11:24:05', 'cancelled', NULL),
+(46, 30, '', '', '2025-11-12 11:25:11', 'cancelled', NULL),
+(47, 30, '', '', '2025-11-12 11:25:48', 'cancelled', NULL),
+(48, 30, '', '', '2025-11-12 11:56:06', 'cancelled', NULL),
+(49, 30, '', '', '2025-11-12 11:56:40', 'cancelled', NULL),
+(50, 30, '', '', '2025-11-12 11:57:20', 'cancelled', NULL),
+(51, 39, '', '', '2025-11-12 12:00:42', 'cancelled', NULL),
+(52, 39, '', '', '2025-11-12 12:01:04', 'cancelled', NULL),
+(53, 39, '', '', '2025-11-12 12:04:06', 'cancelled', NULL),
+(54, 39, '', '', '2025-11-12 12:16:31', 'cancelled', NULL),
+(55, 39, '', '', '2025-11-12 12:16:42', 'cancelled', NULL),
+(56, 39, '', '', '2025-11-12 12:20:29', 'cancelled', NULL),
+(57, 30, '', '', '2025-11-12 12:22:54', 'cancelled', NULL),
+(58, 30, '', '', '2025-11-12 14:03:26', 'cancelled', NULL),
+(59, 30, '', '', '2025-11-12 14:13:10', 'cancelled', NULL),
+(60, 30, '', '', '2025-11-12 14:13:10', 'cancelled', NULL),
+(61, 30, '', '', '2025-11-12 14:13:46', 'cancelled', NULL),
+(62, 30, '', '', '2025-11-12 14:24:11', 'cancelled', NULL),
+(63, 30, '', '', '2025-11-12 15:29:38', 'cancelled', NULL),
+(64, 30, '', '', '2025-11-12 15:35:11', 'cancelled', NULL),
+(65, 30, '', '', '2025-11-12 15:37:13', 'cancelled', NULL),
+(66, 30, '', '', '2025-11-12 15:46:07', 'cancelled', NULL),
+(67, 30, '', '', '2025-11-12 15:56:29', 'cancelled', NULL),
+(68, 30, '', '', '2025-11-12 16:32:33', 'cancelled', NULL),
+(69, 30, '', '', '2025-11-12 16:35:12', 'cancelled', NULL),
+(70, 34, '', '', '2025-11-12 16:45:10', 'cancelled', NULL),
+(71, 34, '', '', '2025-11-12 16:51:02', '', NULL),
+(72, 30, '', '', '2025-11-13 02:22:54', 'cancelled', NULL),
+(73, 30, '', '', '2025-11-13 02:23:17', 'cancelled', NULL),
+(74, 30, '', '', '2025-11-13 02:37:31', 'cancelled', NULL),
+(75, 30, '', '', '2025-11-13 02:38:08', 'cancelled', NULL),
+(76, 30, '', '', '2025-11-13 02:52:09', 'cancelled', NULL),
+(77, 30, '', '', '2025-11-13 02:56:07', 'cancelled', NULL),
+(78, 30, '', '', '2025-11-13 02:58:06', 'cancelled', NULL),
+(79, 30, '', '', '2025-11-13 03:00:36', 'cancelled', NULL),
+(80, 30, '', '', '2025-11-13 03:01:03', 'cancelled', NULL),
+(81, 30, '', '', '2025-11-13 03:32:22', 'cancelled', NULL),
+(82, 30, '', '', '2025-11-13 03:32:57', 'cancelled', NULL),
+(83, 30, '', '', '2025-11-13 03:41:23', 'cancelled', NULL),
+(84, 30, '', '', '2025-11-13 04:02:04', 'shipped', NULL),
+(85, 30, '', '', '2025-11-13 04:17:01', 'shipped', NULL),
+(86, 30, '', '', '2025-11-13 04:53:50', 'shipped', NULL),
+(87, 30, '', '', '2025-11-13 05:08:37', 'cancelled', NULL),
+(88, 30, '', '', '2025-11-13 05:09:07', 'shipped', NULL),
+(89, 30, '', '', '2025-11-13 05:09:07', 'shipped', NULL),
+(90, 30, '', '', '2025-11-13 05:11:10', 'shipped', NULL),
+(91, 30, '', '', '2025-11-13 05:17:21', 'shipped', NULL),
+(92, 30, '', '', '2025-11-13 05:19:36', 'cancelled', NULL),
+(93, 30, '', '', '2025-11-13 05:26:39', 'shipped', NULL),
+(94, 30, '', '', '2025-11-13 05:28:35', 'shipped', NULL),
+(95, 30, '', '', '2025-11-13 05:30:39', 'cancelled', NULL),
+(96, 40, '', '', '2025-11-13 05:33:30', 'shipped', NULL),
+(97, 40, '', '', '2025-11-13 06:04:43', 'cancelled', NULL),
+(98, 40, '', '', '2025-11-13 06:23:13', 'shipped', NULL),
+(99, 40, '', '', '2025-11-13 09:08:52', 'cancelled', NULL),
+(100, 40, '', '', '2025-11-13 09:13:31', 'cancelled', NULL),
+(101, 40, '', '', '2025-11-13 09:17:01', 'cancelled', NULL),
+(102, 40, '', '', '2025-11-13 09:36:00', 'cancelled', NULL),
+(103, 40, '', '', '2025-11-13 09:42:46', 'cancelled', NULL),
+(104, 40, '', '', '2025-11-13 09:53:08', 'delivered', NULL),
+(105, 40, '', '', '2025-11-13 10:20:45', 'delivered', NULL),
+(106, 40, '', '', '2025-11-13 10:23:56', 'delivered', NULL),
+(107, 40, '', '', '2025-11-13 10:28:12', 'delivered', NULL),
+(108, 40, '', '', '2025-11-13 10:57:27', 'delivered', NULL),
+(109, 40, '', '', '2025-11-13 10:59:33', 'delivered', NULL),
+(110, 40, '', '', '2025-11-13 11:01:56', 'delivered', NULL),
+(111, 40, '', '', '2025-11-13 11:02:31', 'delivered', NULL),
+(112, 40, '', '', '2025-11-13 11:06:47', 'delivered', NULL),
+(113, 40, '', '', '2025-11-13 11:28:45', 'cancelled', NULL),
+(114, 40, '', '', '2025-11-13 11:29:32', 'delivered', NULL),
+(115, 40, '', '', '2025-11-13 11:30:46', 'delivered', NULL),
+(116, 30, '', '', '2025-11-13 12:30:38', 'delivered', NULL),
+(117, 30, '', '', '2025-11-13 12:31:27', 'cancelled', NULL),
+(118, 30, '', '', '2025-11-13 12:34:24', 'cancelled', NULL),
+(119, 30, '', '', '2025-11-13 12:43:18', 'cancelled', NULL),
+(120, 30, '', '', '2025-11-13 12:44:55', 'cancelled', NULL),
+(121, 30, '', '', '2025-11-13 12:50:10', 'cancelled', NULL),
+(122, 30, '', '', '2025-11-13 12:53:42', 'cancelled', NULL),
+(123, 30, '', '', '2025-11-13 12:55:18', 'cancelled', NULL),
+(124, 30, '', '', '2025-11-13 12:58:33', 'cancelled', NULL),
+(125, 30, '', '', '2025-11-13 12:59:13', 'cancelled', NULL),
+(126, 30, '', '', '2025-11-13 12:59:51', 'cancelled', NULL),
+(127, 30, '', '', '2025-11-13 14:37:35', 'delivered', NULL),
+(128, 30, '', '', '2025-11-13 14:57:54', 'delivered', NULL),
+(129, 30, '', '', '2025-11-13 15:48:49', 'delivered', NULL),
+(130, 42, '', '', '2025-11-14 09:06:32', 'delivered', NULL),
+(131, 42, '', '', '2025-11-14 09:07:40', 'cancelled', NULL),
+(132, 30, '', '', '2025-11-14 11:18:43', 'cancelled', NULL),
+(133, 30, '', '', '2025-11-14 11:37:08', 'delivered', NULL),
+(134, 30, '', '', '2025-11-14 13:25:41', 'delivered', NULL),
+(135, 30, '', '', '2025-11-14 13:57:01', 'delivered', NULL),
+(136, 30, '', '', '2025-11-14 14:09:42', 'delivered', NULL),
+(137, 30, '', '', '2025-11-14 14:11:04', 'delivered', NULL),
+(138, 30, '', '', '2025-11-14 14:16:49', 'delivered', NULL),
+(139, 30, '', '', '2025-11-14 14:19:53', 'delivered', NULL),
+(140, 30, '', '', '2025-11-14 14:23:57', 'delivered', NULL),
+(141, 30, '', '', '2025-11-14 14:37:56', 'delivered', NULL),
+(142, 30, '', '', '2025-11-14 14:43:27', 'delivered', NULL),
+(143, 30, '', '', '2025-11-14 14:44:44', 'delivered', NULL),
+(144, 30, '', '', '2025-11-14 14:50:30', 'delivered', NULL),
+(145, 30, '', '', '2025-11-14 15:11:19', 'delivered', NULL),
+(146, 30, '', '', '2025-11-14 15:14:22', 'delivered', NULL),
+(148, 30, '', '', '2025-11-14 15:45:22', 'delivered', NULL),
+(149, 30, '', '', '2025-11-14 15:47:16', 'delivered', NULL),
+(150, 30, '', '', '2025-11-14 15:57:37', 'delivered', NULL),
+(151, 30, '', '', '2025-11-14 16:06:41', 'delivered', NULL),
+(152, 30, '', '', '2025-11-14 16:09:49', 'delivered', NULL),
+(154, 30, '', '', '2025-11-15 03:04:04', 'delivered', NULL),
+(155, 30, '', '', '2025-11-15 04:15:50', 'delivered', NULL),
+(156, 30, '', '', '2025-11-15 04:28:15', 'delivered', NULL),
+(157, 30, '', '', '2025-11-15 04:42:24', 'delivered', NULL),
+(158, 30, '', '', '2025-11-15 04:57:13', 'delivered', NULL),
+(159, 30, '', '', '2025-11-15 04:58:14', 'delivered', NULL),
+(160, 30, '', '', '2025-11-15 04:58:38', 'delivered', NULL),
+(161, 30, '', '', '2025-11-15 05:00:50', 'delivered', NULL),
+(162, 30, '', '', '2025-11-15 05:02:36', 'delivered', NULL),
+(163, 30, '', '', '2025-11-15 05:08:16', 'delivered', NULL),
+(164, 30, '', '', '2025-11-15 05:11:11', 'delivered', NULL),
+(165, 30, '', '', '2025-11-15 05:13:07', 'delivered', NULL),
+(166, 30, '', '', '2025-11-15 05:20:25', 'delivered', NULL),
+(167, 30, '', '', '2025-11-15 05:21:05', 'delivered', NULL),
+(168, 30, '', '', '2025-11-15 05:23:07', 'delivered', NULL),
+(169, 30, '', '', '2025-11-15 05:23:59', 'delivered', NULL),
+(170, 30, '', '', '2025-11-15 06:17:50', 'delivered', NULL),
+(171, 30, '', '', '2025-11-15 06:55:09', 'delivered', NULL),
+(172, 30, '', '', '2025-11-15 10:55:25', 'delivered', NULL),
+(173, 30, '', '', '2025-11-15 13:09:30', 'delivered', NULL),
+(174, 30, '', '', '2025-11-15 13:19:11', 'delivered', NULL),
+(175, 30, '', '', '2025-11-15 13:28:06', 'delivered', NULL),
+(176, 30, '', '', '2025-11-15 13:47:24', 'delivered', NULL),
+(177, 30, '', '', '2025-11-15 13:56:14', 'delivered', NULL),
+(178, 30, '', '', '2025-11-15 14:01:49', 'delivered', NULL),
+(179, 30, '', '', '2025-11-15 16:23:23', 'processing', NULL),
+(180, 30, '', '', '2025-11-15 16:30:22', 'processing', NULL),
+(181, 30, '', '', '2025-11-15 16:36:11', 'processing', NULL),
+(182, 30, '', '', '2025-11-15 16:38:10', 'processing', NULL),
+(183, 30, '', '', '2025-11-15 16:38:43', 'processing', NULL),
+(184, 30, '', '', '2025-11-15 16:45:40', 'delivered', NULL),
+(185, 30, '', '', '2025-11-16 04:45:49', 'delivered', NULL),
+(186, 30, '', '', '2025-11-16 04:51:49', 'processing', NULL),
+(187, 43, '', '', '2025-11-16 05:06:03', '', NULL),
+(188, 43, '', '', '2025-11-16 05:15:05', 'cancelled', NULL),
+(189, 43, '', '', '2025-11-16 05:15:56', '', NULL),
+(190, 43, '', '', '2025-11-16 06:49:04', 'shipped', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `item_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `image_url` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`item_id`, `order_id`, `product_name`, `quantity`, `price`, `image_url`) VALUES
+(1, 1, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(2, 2, '3-in-1 Interactive Cat Toy', 1, 60.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(3, 3, 'Cat Tumbler Ball Toy', 1, 20.00, '../HTML/images/Cat Tumbler Boy Toy.jpg'),
+(4, 4, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(5, 5, 'Banana Cat Bed', 1, 32.00, '../HTML/images/banana cat bed.jpg'),
+(6, 6, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(7, 7, 'Flower Shaped Cat Bed', 1, 32.00, '../HTML/images/ed10f9b63f00da532aeae7a698b1a931.jpg'),
+(8, 8, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(9, 9, 'Cat Mouse Toy', 1, 10.00, '../HTML/images/catmouse.jpg'),
+(10, 10, 'Cat Scratch Post', 1, 100.00, '../HTML/images/scratchcat.jpg'),
+(11, 11, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(12, 12, 'Cat Litter Box', 1, 99.00, '../HTML/images/litterbox.jpg'),
+(13, 13, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(14, 14, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(15, 15, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(16, 16, 'Cute Cartoon Ceramic Cat Bowl', 2, 40.00, '../HTML/images/cute cartoon ceramic cat bowl with high stand.jpg'),
+(17, 17, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(18, 18, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(19, 19, 'Cute Cartoon Ceramic Cat Bowl', 1, 40.00, '../HTML/images/cute cartoon ceramic cat bowl with high stand.jpg'),
+(20, 20, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(21, 21, 'Cat Bed', 1, 45.00, '../HTML/images/catbed.jpg'),
+(22, 22, 'Cute Mushroom Raised Cat Bowl', 1, 60.00, '../HTML/images/Cute Mushroom Raised Cat Bowl.jpg'),
+(23, 23, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(24, 24, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(25, 25, 'Cat Food Bowl', 1, 35.00, '../HTML/images/catfoodbowl.jpg'),
+(26, 26, 'Hollow Plastic Ball', 1, 9.00, '../HTML/images/Hollow Plastic Ball.webp'),
+(27, 27, '3-in-1 Interactive Cat Toy', 1, 60.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(28, 28, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(29, 29, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(30, 30, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(31, 31, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(32, 32, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(33, 33, 'Cat Mouse Toy', 1, 10.00, '../HTML/images/catmouse.jpg'),
+(34, 34, 'Hollow Plastic Ball', 1, 9.00, '../HTML/images/Hollow Plastic Ball.webp'),
+(35, 35, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(36, 36, '3-in-1 Interactive Cat Toy', 1, 60.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(37, 37, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(38, 38, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(39, 39, 'Cat Tumbler Ball Toy', 1, 20.00, '../HTML/images/Cat Tumbler Boy Toy.jpg'),
+(40, 40, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(41, 41, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(42, 42, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(43, 43, 'Cat Scratch Post', 1, 100.00, '../HTML/images/scratchcat.jpg'),
+(44, 44, 'Cat Tumbler Ball Toy', 1, 20.00, '../HTML/images/Cat Tumbler Boy Toy.jpg'),
+(45, 45, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(46, 46, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(47, 47, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(48, 48, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(49, 49, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(50, 50, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(51, 51, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(52, 52, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(53, 53, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(54, 54, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(55, 55, '3-in-1 Interactive Cat Toy', 1, 60.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(56, 56, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(57, 57, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(58, 58, '3-in-1 Interactive Cat Toy', 1, 60.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(59, 59, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(60, 60, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(61, 61, 'Cat Frog Bed', 4, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(62, 62, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(63, 63, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(64, 64, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(65, 65, 'Pink Ceramic Raised Cat Bowl', 1, 70.00, '../HTML/images/Pink Ceramic Raised Cat Bowl.jpg'),
+(66, 66, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(67, 67, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(68, 68, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(69, 69, 'Flower Shaped Cat Bed', 1, 32.00, '../HTML/images/ed10f9b63f00da532aeae7a698b1a931.jpg'),
+(70, 70, 'Cat Tumbler Ball Toy', 1, 20.00, '../HTML/images/Cat Tumbler Boy Toy.jpg'),
+(71, 71, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(72, 72, 'Exercise Wheel For Cat', 1, 300.00, '../HTML/images/Exercise Wheel For Cat.jpg'),
+(73, 73, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(74, 74, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(75, 74, 'Cute Mushroom Raised Cat Bowl', 1, 60.00, '../HTML/images/Cute Mushroom Raised Cat Bowl.jpg'),
+(76, 75, 'Cat Frog Bed', 1, 16.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(77, 75, 'Cupcake Cat Tree', 1, 150.00, '../HTML/images/cupcake cat tree.jpg'),
+(78, 76, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(79, 77, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(80, 78, 'Cupcake Cat Tree', 2, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(81, 78, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(82, 79, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(83, 80, '3-in-1 Interactive Cat Toy', 2, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(84, 81, 'Hollow Plastic Ball', 1, 120.00, '../HTML/images/Hollow Plastic Ball.webp'),
+(85, 82, 'Cupcake Cat Tree', 2, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(86, 83, 'Cupcake Cat Tree', 13, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(87, 84, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(88, 85, 'Cat Mouse Toy', 1, 100.00, '../HTML/images/catmouse.jpg'),
+(89, 86, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(90, 87, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(91, 88, 'Cute Mushroom Raised Cat Bowl', 1, 450.00, '../HTML/images/Cute Mushroom Raised Cat Bowl.jpg'),
+(92, 89, 'Cute Mushroom Raised Cat Bowl', 1, 450.00, '../HTML/images/Cute Mushroom Raised Cat Bowl.jpg'),
+(93, 90, 'Cat Tree', 1, 900.00, '../HTML/images/cattree.jpg'),
+(94, 91, 'Hollow Plastic Ball', 1, 120.00, '../HTML/images/Hollow Plastic Ball.webp'),
+(95, 91, 'Cat Mouse Toy', 1, 100.00, '../HTML/images/catmouse.jpg'),
+(96, 91, 'Cat Bed', 1, 400.00, '../HTML/images/catbed.jpg'),
+(97, 92, 'Foldable Cat Carrier Bag', 1, 900.00, '../HTML/images/Foldable Cat Carrier Bag.jpg'),
+(98, 93, 'Cat Frog Bed', 2, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(99, 93, 'Exercise Wheel For Cat', 1, 2050.00, '../HTML/images/Exercise Wheel For Cat.jpg'),
+(100, 94, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(101, 94, 'Cat Litter Box', 1, 780.00, '../HTML/images/litterbox.jpg'),
+(102, 94, 'Cupcake Cat Tree', 1, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(103, 95, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(104, 96, 'Cat Bed', 1, 400.00, '../HTML/images/catbed.jpg'),
+(105, 97, 'Cat Bed', 1, 400.00, '../HTML/images/catbed.jpg'),
+(106, 98, 'Cupcake Cat Tree', 15, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(107, 99, 'Cat Litter Box', 1, 780.00, '../HTML/images/litterbox.jpg'),
+(108, 100, 'Flower Shaped Cat Bed', 1, 450.00, '../HTML/images/ed10f9b63f00da532aeae7a698b1a931.jpg'),
+(109, 101, 'Cat Mouse Toy', 1, 100.00, '../HTML/images/catmouse.jpg'),
+(110, 102, 'Flower Shaped Cat Bed', 1, 450.00, '../HTML/images/ed10f9b63f00da532aeae7a698b1a931.jpg'),
+(111, 103, 'Hollow Plastic Ball', 1, 120.00, '../HTML/images/Hollow Plastic Ball.webp'),
+(112, 104, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(113, 105, 'Cupcake Cat Tree', 3, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(114, 106, 'Cat Frog Bed', 121, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(115, 107, 'Foldable Cat Carrier Bag', 1, 900.00, '../HTML/images/Foldable Cat Carrier Bag.jpg'),
+(116, 108, 'Cat Carrier', 1, 600.00, '../HTML/images/catcarrier.jpg'),
+(117, 109, 'Cat Carrier', 2, 600.00, '../HTML/images/catcarrier.jpg'),
+(118, 110, 'Foldable Cat Carrier Bag', 5, 900.00, '../HTML/images/Foldable Cat Carrier Bag.jpg'),
+(119, 111, 'Foldable Cat Carrier Bag', 10, 900.00, '../HTML/images/Foldable Cat Carrier Bag.jpg'),
+(120, 112, 'Foldable Cat Carrier Bag', 55, 900.00, '../HTML/images/Foldable Cat Carrier Bag.jpg'),
+(121, 113, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(122, 114, 'Cupcake Cat Tree', 5, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(123, 115, 'Flower Cat Tree', 122, 1050.00, '../HTML/images/Flower Cat Tree.jpg'),
+(124, 116, '3-in-1 Interactive Cat Toy', 1, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(125, 117, '3-in-1 Interactive Cat Toy', 22, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(126, 118, 'Pink Ceramic Raised Cat Bowl', 45, 230.00, '../HTML/images/Pink Ceramic Raised Cat Bowl.jpg'),
+(127, 119, 'Flower Cat Tree', 20, 1050.00, '../HTML/images/Flower Cat Tree.jpg'),
+(128, 120, 'Cat Frog Bed', 22, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(129, 121, 'Cupcake Cat Tree', 20, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(130, 122, 'Cat Tumbler Ball Toy', 80, 200.00, '../HTML/images/Cat Tumbler Boy Toy.jpg'),
+(131, 123, 'Cat Tumbler Ball Toy', 5, 200.00, '../HTML/images/Cat Tumbler Boy Toy.jpg'),
+(132, 124, 'Flower Cat Tree', 1, 1050.00, '../HTML/images/Flower Cat Tree.jpg'),
+(133, 125, 'Flower Cat Tree', 1, 1050.00, '../HTML/images/Flower Cat Tree.jpg'),
+(134, 126, 'Flower Cat Tree', 120, 1050.00, '../HTML/images/Flower Cat Tree.jpg'),
+(135, 127, 'Flower Cat Tree', 1, 1050.00, '../HTML/images/Flower Cat Tree.jpg'),
+(136, 128, 'Cat Mouse Toy', 1, 100.00, '../HTML/images/catmouse.jpg'),
+(137, 129, 'Cupcake Cat Tree', 1, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(138, 130, 'Cat Frog Bed', 12, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(139, 131, 'Cat Frog Bed', 200, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(140, 132, 'Wiggly Worm Cat Teaser Wand', 1, 40.00, '../HTML/images/wiggly worm cat teaser wand.jpg'),
+(141, 133, '3-in-1 Interactive Cat Toy', 1, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(142, 134, '3-in-1 Interactive Cat Toy', 1, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(143, 135, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(144, 136, 'Flower Cat Tree', 119, 1050.00, '../HTML/images/Flower Cat Tree.jpg'),
+(145, 137, 'Foldable Cat Carrier Bag', 1, 900.00, '../HTML/images/Foldable Cat Carrier Bag.jpg'),
+(146, 138, 'Wiggly Worm Cat Teaser Wand', 1, 40.00, '../HTML/images/wiggly worm cat teaser wand.jpg'),
+(147, 139, 'sheimmer', 5, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(148, 140, 'Cupcake Cat Tree', 4, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(149, 141, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(150, 142, 'Pink Ceramic Raised Cat Bowl', 12, 230.00, '../HTML/images/Pink Ceramic Raised Cat Bowl.jpg'),
+(151, 143, 'Cupcake Cat Tree', 1, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(152, 144, 'Cupcake Cat Tree', 12, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(153, 145, 'Cat Frog Bed', 22, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(154, 146, 'sheimmer', 120, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(156, 148, 'Cupcake Cat Tree', 121, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(157, 149, 'Cupcake Cat Tree', 22, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(158, 150, 'Cat Frog Bed', 12, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(159, 151, 'Cupcake Cat Tree', 10, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(160, 152, 'Cupcake Cat Tree', 22, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(162, 154, 'sheimmer', 12, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(163, 155, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(164, 156, 'Cat Frog Bed', 12, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(165, 157, '3-in-1 Interactive Cat Toy', 12, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(166, 158, '3-in-1 Interactive Cat Toy', 4, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(167, 159, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(168, 160, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(169, 161, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(170, 162, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(171, 163, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(172, 164, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(173, 165, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(174, 166, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(175, 167, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(176, 168, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(177, 169, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(178, 170, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(179, 171, 'Cat Mouse Toy', 1, 100.00, '../HTML/images/catmouse.jpg'),
+(180, 172, 'sheimmer', 1, 20000.00, '../HTML/uploads/1763111338_6916f1aa0012b.png'),
+(181, 173, '3-in-1 Interactive Cat Toy', 1, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(182, 174, 'Spaceship Litter Box', 1, 800.00, '../HTML/images/Spaceship Litter Box.jpg'),
+(183, 175, 'Flower Shaped Cat Bed', 12, 450.00, '../HTML/images/ed10f9b63f00da532aeae7a698b1a931.jpg'),
+(184, 176, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(185, 177, 'Cat Frog Bed', 26, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(186, 178, 'Cupcake Cat Tree', 12, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(187, 179, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(188, 180, 'Cupcake Cat Tree', 1, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(189, 181, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(190, 182, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(191, 183, '3-in-1 Interactive Cat Toy', 12, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(192, 184, 'Cupcake Cat Tree', 4, 1120.00, '../HTML/images/cupcake cat tree.jpg'),
+(193, 185, 'Spaceship Litter Box', 22, 800.00, '../HTML/images/Spaceship Litter Box.jpg'),
+(194, 186, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(195, 187, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(196, 188, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(197, 189, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(198, 190, 'Cat Frog Bed', 1, 334.00, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg'),
+(199, 190, '3-in-1 Interactive Cat Toy', 1, 250.00, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg'),
+(200, 190, 'Mushroom Cat Scratcher', 1, 600.00, '../HTML/images/Mushroom Cat Scratcher.jpg'),
+(201, 190, 'Cat Tree', 1, 900.00, '../HTML/images/cattree.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `payment_id` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `amount` decimal(10,0) NOT NULL,
+  `payment_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `method` enum('credit card','debit card','cash','cod','gcash') NOT NULL,
+  `proof_path` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`payment_id`, `order_id`, `amount`, `payment_date`, `method`, `proof_path`) VALUES
+(1, 181, 334, '2025-11-15 16:36:11', '', NULL),
+(2, 182, 334, '2025-11-15 16:38:10', 'gcash', NULL),
+(3, 183, 3000, '2025-11-15 16:38:43', 'gcash', NULL),
+(4, 184, 4480, '2025-11-15 16:45:40', 'gcash', 'uploads/payments/pay_6918ae3430dd4.jpg'),
+(5, 185, 17600, '2025-11-16 04:45:50', 'gcash', 'uploads/payments/pay_691956fde848a.png'),
+(6, 186, 334, '2025-11-16 04:51:49', '', NULL),
+(7, 187, 334, '2025-11-16 05:06:03', '', NULL),
+(8, 188, 334, '2025-11-16 05:15:05', '', NULL),
+(9, 189, 334, '2025-11-16 05:15:56', 'gcash', 'uploads/payments/pay_69195e0c0df5f.png'),
+(10, 190, 2084, '2025-11-16 06:49:04', 'gcash', 'uploads/payments/pay_691973e06d22d.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `product_id` int(11) NOT NULL,
+  `name` varchar(99) NOT NULL,
+  `description` text DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `rating` decimal(2,1) DEFAULT NULL,
+  `stock` int(11) DEFAULT 0,
+  `image_url` varchar(255) DEFAULT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `name`, `description`, `price`, `rating`, `stock`, `image_url`, `create_at`) VALUES
+(2, 'Cat Scratch Post', 'Durable cat scratch post for your feline friend', 500.00, 5.0, 50, '../HTML/images/scratchcat.jpg', '2025-11-09 10:55:18'),
+(3, 'Cat Mouse Toy', 'Interactive mouse toy for cats', 100.00, 3.0, 98, '../HTML/images/catmouse.jpg', '2025-11-09 10:55:18'),
+(4, 'Cat Bed', 'Comfortable cat bed for rest and relaxation', 400.00, 5.0, 75, '../HTML/images/catbed.jpg', '2025-11-09 10:55:19'),
+(5, 'Cat Tree', 'Multi-level cat tree for climbing and playing', 900.00, 5.0, 29, '../HTML/images/cattree.jpg', '2025-11-09 10:55:19'),
+(6, 'Wiggly Worm Cat Teaser Wand', 'Interactive wand toy with wiggly worm attachment', 40.00, 5.0, 79, '../HTML/images/wiggly worm cat teaser wand.jpg', '2025-11-09 10:55:19'),
+(7, 'Cat Food Bowl', 'Sturdy food bowl for your cat', 440.00, 5.0, 90, '../HTML/images/catfoodbowl.jpg', '2025-11-09 10:55:19'),
+(8, 'Cat Litter Box', 'Hygienic litter box for cats', 780.00, 5.0, 60, '../HTML/images/litterbox.jpg', '2025-11-09 10:55:19'),
+(9, 'Cat Carrier', 'Safe and comfortable cat carrier for travel', 600.00, 5.0, 40, '../HTML/images/catcarrier.jpg', '2025-11-09 10:55:19'),
+(10, 'Cute Cartoon Ceramic Cat Bowl', 'Adorable ceramic cat bowl with high stand', 400.00, 5.0, 70, '../HTML/images/cute cartoon ceramic cat bowl with high stand.jpg', '2025-11-09 10:55:19'),
+(11, 'Flower Shaped Cat Bed', 'Beautiful flower-shaped cat bed', 450.00, 5.0, 43, '../HTML/images/ed10f9b63f00da532aeae7a698b1a931.jpg', '2025-11-09 10:55:19'),
+(12, 'Banana Cat Bed', 'Fun banana-shaped cat bed', 400.00, 5.0, 65, '../HTML/images/banana cat bed.jpg', '2025-11-09 10:55:19'),
+(13, 'Three Tier Flower Cat Tree', 'Beautiful three-tier flower cat tree', 1115.00, 5.0, 25, '../HTML/images/three tier flower cat tree.jpg', '2025-11-09 10:55:19'),
+(14, 'Pink Ceramic Raised Cat Bowl', 'Elegant pink ceramic raised cat bowl', 230.00, 5.0, 200, '../HTML/images/Pink Ceramic Raised Cat Bowl.jpg', '2025-11-09 10:55:19'),
+(15, 'Cute Mushroom Raised Cat Bowl', 'Adorable mushroom-themed raised cat bowl', 450.00, 5.0, 50, '../HTML/images/Cute Mushroom Raised Cat Bowl.jpg', '2025-11-09 10:55:19'),
+(16, 'Foldable Cat Carrier Bag', 'Convenient foldable cat carrier bag', 900.00, 5.0, 34, '../HTML/images/Foldable Cat Carrier Bag.jpg', '2025-11-09 10:55:19'),
+(17, 'Exercise Wheel For Cat', 'Exercise wheel for active cats', 2050.00, 5.0, 20, '../HTML/images/Exercise Wheel For Cat.jpg', '2025-11-09 10:55:19'),
+(18, 'Cat Tumbler Ball Toy', 'Interactive tumbler ball toy for cats', 200.00, 5.0, 212, '../HTML/images/Cat Tumbler Boy Toy.jpg', '2025-11-09 10:55:19'),
+(19, 'Spaceship Litter Box', 'Futuristic spaceship-themed litter box', 800.00, 5.0, 47, '../HTML/images/Spaceship Litter Box.jpg', '2025-11-09 10:55:19'),
+(20, 'Hollow Plastic Ball', 'Simple hollow plastic ball toy', 120.00, 5.0, 120, '../HTML/images/Hollow Plastic Ball.webp', '2025-11-09 10:55:19'),
+(21, 'Mushroom Cat Scratcher', 'Cute mushroom-shaped cat scratcher', 600.00, 5.0, 29, '../HTML/images/Mushroom Cat Scratcher.jpg', '2025-11-09 10:55:19'),
+(22, 'Cupcake Cat Tree', 'Delightful cupcake-themed cat tree', 1120.00, 5.0, 2, '../HTML/images/cupcake cat tree.jpg', '2025-11-09 10:55:19'),
+(23, 'Cat Frog Bed', 'Adorable frog-shaped cat bed', 334.00, 5.0, 116, '../HTML/images/c40339c1a8de417f0b4ea5d968799846.jpg', '2025-11-09 10:55:19'),
+(24, '3-in-1 Interactive Cat Toy', 'Advanced 3-in-1 interactive cat toy with LED lights', 250.00, 5.0, 200, '../HTML/images/3n1 Interactive Toy With Fluttering Butterfly Led Light Automatic Cat Toy.jpg', '2025-11-09 10:55:19'),
+(25, 'Flower Cat Tree', 'Beautiful flower-themed cat tree', 1050.00, 5.0, 0, '../HTML/images/Flower Cat Tree.jpg', '2025-11-09 10:55:19'),
+(29, 'sheimmer', 'dhasjdhaskjdhas', 20000.00, 5.0, 83, '../HTML/uploads/1763111338_6916f1aa0012b.png', '2025-11-14 09:08:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_ratings`
+--
+
+CREATE TABLE `product_ratings` (
+  `rating_id` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `stars` tinyint(4) NOT NULL,
+  `review` text DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_ratings`
+--
+
+INSERT INTO `product_ratings` (`rating_id`, `product_name`, `user_id`, `username`, `stars`, `review`, `created_at`) VALUES
+(1, 'Cat Frog Bed', 30, 'patok', 3, 'gwapo ko', '2025-11-15 14:18:22'),
+(2, 'Cat Mouse Toy', 30, 'patok', 3, 'wehhh', '2025-11-15 14:55:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `username` varchar(99) DEFAULT NULL,
+  `name` varchar(99) NOT NULL,
+  `email` varchar(99) NOT NULL,
+  `password_hash` varchar(99) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `gender` enum('Male','Female','Other') DEFAULT 'Other',
+  `birthdate` date DEFAULT NULL,
+  `profile_image` varchar(255) DEFAULT 'default.png',
+  `role` enum('user','admin') DEFAULT 'user',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `name`, `email`, `password_hash`, `phone`, `gender`, `birthdate`, `profile_image`, `role`, `created_at`, `updated_at`) VALUES
+(26, 'Katakumi', 'Katakumi', 'Katakumi123x@gmail.com', '$2y$10$tZrSUooqAzGFdxxfw3obFeQqCBsFhCv7PkSIi8H4F6yF0VM3H6UQq', '09619400663', 'Other', NULL, 'default.png', 'user', '2025-11-08 14:26:09', '2025-11-08 14:26:09'),
+(27, NULL, 'Alec Jude Albarico Jaraula', 'alec321x@gmail.com', '$2y$10$Ag6y7PEzT8grGylRGY6b6OHz2GJJsLJ.HlsRan9LlGQnPWCWxKBdG', '09123456789', 'Other', NULL, 'default.png', 'admin', '2025-11-09 10:19:49', '2025-11-09 10:19:49'),
+(29, 'katakumi11', 'Alec Jude', 'katakumi11@gmail.com', '$2y$10$aW0UHrYxEbeA0.L5/Cn2kuJaov4gW0IuiINCNsesNBPmtPDJd.dO2', '09619400663', 'Female', '2025-11-13', '691077ad7557a_576675816_858698916493169_6583958264961984476_n.jpg', 'user', '2025-11-09 10:59:11', '2025-11-09 11:43:22'),
+(30, 'patok', 'Alec Jude Jaraula', 'patok@gmail.com', '$2y$10$bIy0ax.Oh647RtdyACYUxuMyI7MYf1V7aWr7F0JbGMkuYfYd.Bd9.', '09345678901', 'Other', '2025-11-01', '6911ddb6586df_576675816_858698916493169_6583958264961984476_n.jpg', 'user', '2025-11-09 11:44:09', '2025-11-12 12:23:25'),
+(31, 'potanginamoaman', 'potanginamoamandatuimam', 'potangina@gmail.com', '$2y$10$VEBWqbAkw1tlP4aTNUXhOe4HDiCTmGxZQmf/2ZsKxVv67Z0q361lK', '09617778889', 'Other', NULL, 'default.png', 'user', '2025-11-10 03:39:13', '2025-11-10 03:39:13'),
+(33, 'katakumi112', 'Alec Jude Albarico Jaraula', 'katakumi112@gmail.com', '$2y$10$G/ScdfN/1gtbGBSMK1QRBeiCbgnemQKA.on/ghDQPxSVJ2YEnpoTO', '09619400663', 'Other', NULL, 'default.png', 'user', '2025-11-10 11:00:31', '2025-11-10 11:00:31'),
+(34, 'rukachandesu', 'Alec Jude Albarico Jaraula', 'alec321x22@gmail.com', '$2y$10$OX9F7rHwr7dVrQeYtlWgDOtYRMbWxofzrO5zYu9i4fNmfPa8VdOPy', '09619400663', 'Other', NULL, '69130acf97797_Chaeyoung_at_Gaon_Awards_red_carpet_on_January_23,_2019.jpg', 'user', '2025-11-11 09:43:22', '2025-11-11 10:07:11'),
+(35, 'Noora', 'Prince Aaron James Bacang', 'prince.aaron@gmail.com', '$2y$10$A9x1WWdEshnppGGG7XG3reiEdike.q.KlTLyWFTeqRhMnd2ua.pRm', '09619400663', 'Male', '2003-02-13', '69132cb08f0fb_daumingso.jpg', 'user', '2025-11-11 12:31:07', '2025-11-11 12:32:40'),
+(36, 'alec321x', 'Katakumi', 'gwapo@gmail.com', '$2y$10$IXC8WSMYiyjQPUBaFeCcsu3UWtYlMh8gdZWA6UyVdyvmy8myg6/Km', '09111111111', 'Other', NULL, '69134d2e623e7_daumingso.jpg', 'user', '2025-11-11 14:50:07', '2025-11-11 14:50:22'),
+(37, 'Jikson Water', 'Jason Walter', 'jasonpads@gmail.com', '$2y$10$yxcItxguiD6wH5wUwsIUwuPEW24f1WUsiUJ2omJ0pNoLIpWu6tD.S', '09321321213', 'Male', '2004-09-20', '69145372ed7ae_46519116_412812796204356_4033727297495236608_n.jpg', 'user', '2025-11-12 09:28:29', '2025-11-12 09:29:23'),
+(38, 'catfood', 'Cat Food', 'catfood213@gmail.com', '$2y$10$ziz1j4yd6wKv8OGvdEtNzupvMpQEPxgQiXK0a7iC7CTMsAygjBLrK', '09123123123', 'Other', NULL, 'default.png', 'user', '2025-11-12 11:41:17', '2025-11-12 11:41:17'),
+(39, 'alik', 'alikjod', 'alik@gmail.com', '$2y$10$MAjU8ouNYD1U4e1b2bYth.grFZ7OM6kKlnd8Qd/m7xsmqgps8ZVDG', '09123123123', 'Other', NULL, '691477289001a_46519116_412812796204356_4033727297495236608_n.jpg', 'user', '2025-11-12 12:00:04', '2025-11-12 12:01:44'),
+(40, 'katakumi111', 'katakumi', 'jude@gmail.com', '$2y$10$egH7JUws67cLsh7W/fp8g.QMBubKVQeDME8Vj/K4OWqXkB81i5rw.', '09632327222', 'Female', '2004-12-23', '69156f4224b84_nerd-cat.png', 'user', '2025-11-13 05:32:41', '2025-11-13 05:40:18'),
+(41, 'tangina', 'tangina', 'alec0@gmail.com', '$2y$10$raxpwLjkSnEhSAgdL96zUOgOu5xNJiQvRo4SF.z5sDN9DSn8OtDKu', '12312312312', 'Other', NULL, 'default.png', 'user', '2025-11-14 08:57:22', '2025-11-14 08:57:22'),
+(42, 'sheimmer123', 'sheimmer', 'sheimmer@gmail.com', '$2y$10$AfaaqHfPubRuhkSQgzq8yumSOfetoUPrsQDoWPHNWtvh/4hFq7s..', '09742132111', 'Male', '2025-10-29', '6916f0f95a799_download-removebg-preview.png', 'user', '2025-11-14 09:05:12', '2025-11-14 09:06:01'),
+(43, 'catfood2', 'Cat Food ww', 'catfood2@gmail.com', '$2y$10$AsB65w922GSbBWteUAOG6urG.23UwOLf2j6qIGqHkXhpvAzlxPgUG', '09742131222', 'Other', NULL, 'default.png', 'user', '2025-11-16 05:05:46', '2025-11-16 05:05:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_addresses`
+--
+
+CREATE TABLE `user_addresses` (
+  `address_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `fullname` varchar(120) NOT NULL,
+  `phone` varchar(32) NOT NULL,
+  `label` varchar(20) DEFAULT 'Home',
+  `address_line` varchar(255) NOT NULL,
+  `barangay` varchar(120) DEFAULT '',
+  `city` varchar(120) NOT NULL,
+  `province` varchar(120) DEFAULT '',
+  `postal_code` varchar(16) DEFAULT '',
+  `is_default` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_addresses`
+--
+
+INSERT INTO `user_addresses` (`address_id`, `user_id`, `fullname`, `phone`, `label`, `address_line`, `barangay`, `city`, `province`, `postal_code`, `is_default`, `created_at`) VALUES
+(2, 30, 'Alec', '09619400663', 'Home', 'Zone 5', 'Iponan', 'Cagayan de Oro City', 'Misamis Oriental', '9000', 0, '2025-11-10 14:48:09'),
+(3, 30, 'dsad', 'sada', 'Home', 'sadas', 'Tondo', 'Manila', 'Metro Manila', '10000', 1, '2025-11-10 21:22:23'),
+(4, 30, 'Alec', '09619400663', 'Work', 'Zone 5', 'Tondo', 'Manila', 'Metro Manila', '9000', 0, '2025-11-11 05:01:51'),
+(5, 37, 'Jason Walter', '09321321213', 'Home', 'Zone 3', 'Carmen', 'Cagayan de Oro', 'Misamis Oriental', '9000', 1, '2025-11-12 09:30:47'),
+(6, 34, 'Alec Jude Albarico Jaraula', '09619400663', 'Home', 'Zone 5', 'Tondo', 'Manila', 'Metro Manila', '9000', 1, '2025-11-12 16:49:09'),
+(7, 30, 'Alec', '09999999', 'Home', 'sadas', 'Tondo', 'Manila', 'Metro Manila', '10000', 0, '2025-11-14 08:56:22'),
+(9, 43, 'cat food', '09742131222', 'Home', 'sadasasa', 'Tondo', 'Manila', 'Metro Manila', '10000', 1, '2025-11-16 05:13:12');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `delivery`
+--
+ALTER TABLE `delivery`
+  ADD PRIMARY KEY (`delivery_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`item_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `product_ratings`
+--
+ALTER TABLE `product_ratings`
+  ADD PRIMARY KEY (`rating_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `user_addresses`
+--
+ALTER TABLE `user_addresses`
+  ADD PRIMARY KEY (`address_id`),
+  ADD KEY `idx_user` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `delivery`
+--
+ALTER TABLE `delivery`
+  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `product_ratings`
+--
+ALTER TABLE `product_ratings`
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT for table `user_addresses`
+--
+ALTER TABLE `user_addresses`
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `delivery`
+--
+ALTER TABLE `delivery`
+  ADD CONSTRAINT `delivery_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `payments`
+--
+ALTER TABLE `payments`
+  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`);
+
+--
+-- Constraints for table `user_addresses`
+--
+ALTER TABLE `user_addresses`
+  ADD CONSTRAINT `fk_addr_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
